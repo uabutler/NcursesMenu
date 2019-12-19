@@ -1,6 +1,6 @@
 /* Author: Ulysses A. Butler */
 /* Last Modified: 12/18/2019 */
-/* Version: 1.1              */
+/* Version: 1.2              */
 
 #ifndef MENU_H
 #define MENU_H
@@ -45,20 +45,20 @@ private:
 
   bool vertical;
 
-  int headerAttr;
-  int itemAttr;
-  int selectedAttr;
+  unsigned headerAttr;
+  unsigned itemAttr;
+  unsigned selectedAttr;
 
   void changeSelectionHelper(int dif);
   void paddedPrint(int row, int col, string str, size_t len);
 
 public:
-  Menu(int ha = HA, int ia = IA, int sa = SA);
-  Menu(string h, int ha = HA, int ia = IA, int sa = SA);
-  Menu(bool v, int ha = HA, int ia = IA, int sa = SA);
-  Menu(string h, bool v, int ha = HA, int ia = IA, int sa = SA);
-  Menu(const char* h, int ha = HA, int ia = IA, int sa = SA);
-  Menu(const char* h, bool v, int ha = HA, int ia = IA, int sa = SA);
+  Menu(unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
+  Menu(string h, unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
+  Menu(bool v, unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
+  Menu(string h, bool v, unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
+  Menu(const char* h, unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
+  Menu(const char* h, bool v, unsigned ha = HA, unsigned ia = IA, unsigned sa = SA);
 
   void addItem(string name, T value);
   
@@ -96,32 +96,32 @@ void Menu<T>::paddedPrint(int row, int col, string str, size_t len)
 // also pass an optional header, and boolean that tells the program
 // if the menu should be printed horizontally or vertically
 template <typename T>
-Menu<T>::Menu(int ha, int ia, int sa):
+Menu<T>::Menu(unsigned ha, unsigned ia, unsigned sa):
 header(""), hasHeader(false), height(0), width(0), current(0),
 vertical(true), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
 template <typename T>
-Menu<T>::Menu(string h, int ha, int ia, int sa):
+Menu<T>::Menu(string h, unsigned ha, unsigned ia, unsigned sa):
 header(h), hasHeader(true), height(1), width(h.length()), current(0),
 vertical(true), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
 template <typename T>
-Menu<T>::Menu(bool v, int ha, int ia, int sa):
+Menu<T>::Menu(bool v, unsigned ha, unsigned ia, unsigned sa):
 header(""), hasHeader(false), height(0), width(0), current(0),
 vertical(v), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
 template <typename T>
-Menu<T>::Menu(string h, bool v, int ha, int ia, int sa):
+Menu<T>::Menu(string h, bool v, unsigned ha, unsigned ia, unsigned sa):
 header(h), hasHeader(true), height(1), width(h.length()), current(0),
 vertical(v), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
 template <typename T>
-Menu<T>::Menu(const char* h, int ha, int ia, int sa):
+Menu<T>::Menu(const char* h, unsigned ha, unsigned ia, unsigned sa):
 header(h), hasHeader(true), height(1), width(strlen(h)), current(0),
 vertical(true), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
 template <typename T>
-Menu<T>::Menu(const char* h, bool v, int ha, int ia, int sa):
+Menu<T>::Menu(const char* h, bool v, unsigned ha, unsigned ia, unsigned sa):
 header(h), hasHeader(true), height(1), width(strlen(h)), current(0),
 vertical(v), headerAttr(ha), itemAttr(ia), selectedAttr(sa) {}
 
