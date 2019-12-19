@@ -135,7 +135,7 @@ void Menu<T>::addItem(string name, T value)
   else
   {
     height = hasHeader ? 2 : 1;
-    width += name.length() + 2;
+    width += name.length() + VS;
   }
 }
 
@@ -200,7 +200,7 @@ void Menu<T>::print(int r, int c)
     attrset(itemAttr);
     for(size_t curItem = 1; curItem < items.size(); curItem++)
     {
-      curCol += items[curItem - 1].first.length() + 2;
+      curCol += items[curItem - 1].first.length() + VS;
       mvprintw(curRow, curCol, "%s", items[curItem].first.c_str());
     }
   }
@@ -245,7 +245,7 @@ void Menu<T>::changeSelectionHelper(int dif)
   {
     int offset = 0;
     for(int i = 0; i < (int)current; i++)
-      offset += items[i].first.length() + 2;
+      offset += items[i].first.length() + VS;
 
     attrset(itemAttr);
     mvprintw(row + (hasHeader ? 1 : 0), col + offset,
@@ -258,12 +258,12 @@ void Menu<T>::changeSelectionHelper(int dif)
     if(inc == 1)
     { 
       for(int i = current; i < (int)current + dif; i += inc)
-        offset += items[i].first.length() + 2;
+        offset += items[i].first.length() + VS;
     }
     else if(inc == -1)
     {
       for(int i = (int)current - 1; i >= (int)current + dif; i += inc)
-        offset -= items[i].first.length() + 2;
+        offset -= items[i].first.length() + VS;
     }
 
     attrset(selectedAttr);
