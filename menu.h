@@ -1,6 +1,6 @@
-/* Author: Ulysses A. Butler */
+
 /* Last Modified: 12/18/2019 */
-/* Version: 1.2              */
+/* Version: 1.3              */
 
 #ifndef MENU_H
 #define MENU_H
@@ -64,7 +64,7 @@ public:
   
   int getHeight();
   int getWidth();
-  void getHeightWidth(int& h, int& w);
+  void getyx(int& h, int& w);
 
   bool isVertical();
 
@@ -156,7 +156,7 @@ int Menu<T>::getWidth()
 }
 
 template <typename T>
-void Menu<T>::getHeightWidth(int& h, int& w)
+void Menu<T>::getyx(int& h, int& w)
 {
   h = height;
   w = width;
